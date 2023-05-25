@@ -1,9 +1,9 @@
 require("dotenv").config();
-import { Router } from "express"; // uso el middleware express para poder usar los json que llegan por body
+const { Router } = require("express"); // uso el middleware express para poder usar los json que llegan por body
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
-import { Temp } from "../db.js";
+const {  Temp } = require("../db.js");
 
 router.get('/', async (req, res) => {
     try{
@@ -37,4 +37,4 @@ router.get('/', async (req, res) => {
 // })
 
 
-export default router;
+module.exports = router;

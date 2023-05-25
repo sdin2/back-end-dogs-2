@@ -1,15 +1,15 @@
 require("dotenv").config();
-import { Router } from "express"; // uso el middleware express para poder usar los json que llegan por body
+const { Router } = require("express"); // uso el middleware express para poder usar los json que llegan por body
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-import { get } from "axios";
+const axios = require("axios");
 const router = Router();
-import { Dog, Temp } from "../db.js";
+const { Dog, Temp } = require("../db.js");
 
 
 // casos: "NaN" - ["NaN - numero"] - ["numero - NaN"] -"numero"- NO EXISTA en metric pero si en imperials - que no exista - que en imperial sea letras distintas de NaN
 const apiData = async ()=>{
-    const allApi=await get(`https://api.thedogapi.com/v1/breeds`)
+    const allApi=await axios.get(`https://api.thedogapi.com/v1/breeds`)
     const dogApi= await allApi.data.map((e)=>{
         return{
             name : e.name,
@@ -138,4 +138,4 @@ router.post("/", async(req,res,next)=>{
 })
 
 
-export default router;
+module.exports = router;

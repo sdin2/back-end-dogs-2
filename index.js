@@ -1,10 +1,10 @@
-import { listen } from './src/app.js';
-import { conn, Temp } from './src/db.js';
-import { get } from "axios";
+const server = require('./src/app.js');
+const { conn, Temp } = require('./src/db.js');
+const axios = require("axios");
 const PORT = 5432
 
 let allTemperamentsDb=async()=>{
-  const temperamentosDb =await get("https://api.thedogapi.com/v1/breeds")
+  const temperamentosDb =await axios.get("https://api.thedogapi.com/v1/breeds")
   let temperamentosDbalone= temperamentosDb.data.map((e)=>e.temperament)
   let temperament=[]
       for (let i = 0; i < temperamentosDbalone.length; i++) {
@@ -26,7 +26,7 @@ let allTemperamentsDb=async()=>{
 
 // Syncing all the models at once.
 conn.sync().then(() => {
-  listen(PORT, () => {
+  server.listen(PORT, () => {
     allTemperamentsDb()
     console.log('%s listening at port',PORT); // eslint-disable-line no-console
   });
