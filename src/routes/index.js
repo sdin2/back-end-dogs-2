@@ -1,4 +1,3 @@
-require("dotenv").config();
 const { Router } = require("express"); // uso el middleware express para poder usar los json que llegan por body
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
