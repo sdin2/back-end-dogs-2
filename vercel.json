@@ -4,11 +4,5 @@
         {
             "src": "index.js"
         }
-    ],
-    "routes": [
-        {
-            "src": "/routes",
-            "dest": "index.js"
-        }
     ]
 }
