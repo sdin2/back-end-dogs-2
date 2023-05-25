@@ -20,7 +20,6 @@ let allTemperamentsDb=async()=>{
          where: {name : el.trim()}
      })
   })
-
   console.log("temperamentos agregados a la base de datos")
   }
 
