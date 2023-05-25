@@ -4,7 +4,7 @@ import { urlencoded, json } from 'body-parser';
 import morgan from 'morgan';
 import routes from './routes/index.js';
 const {CORS_URL} = process.env
-require('./db.js').default;
+require('./db.js');
 
 const server = express();
 
